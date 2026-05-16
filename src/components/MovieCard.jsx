@@ -1,5 +1,10 @@
 // Tarjeta con información de una película
 const MovieCard = ({ movie }) => {
+
+  // Imagen por defecto
+  const defaultPoster =
+    'https://placehold.co/300x450?text=Sin+Poster'
+
   return (
     <div className="border rounded shadow p-3 flex flex-col items-center">
 
@@ -8,15 +13,26 @@ const MovieCard = ({ movie }) => {
         src={
           movie.Poster !== 'N/A'
             ? movie.Poster
-            : 'https://via.placeholder.com/300x450?text=Sin+Poster'
+            : defaultPoster
         }
         alt={movie.Title}
+
+        // Si la imagen falla, coloca imagen por defecto
+        onError={(e) => {
+          e.currentTarget.src = defaultPoster
+        }}
+
         className="w-full h-72 object-cover rounded"
       />
 
       {/* Título y año */}
-      <h2 className="font-bold text-center">{movie.Title}</h2>
-      <p className="text-gray-500">{movie.Year}</p>
+      <h2 className="font-bold text-center mt-3">
+        {movie.Title}
+      </h2>
+
+      <p className="text-gray-500">
+        {movie.Year}
+      </p>
     </div>
   )
 }
