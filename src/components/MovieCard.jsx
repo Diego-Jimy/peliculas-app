@@ -5,9 +5,13 @@ const MovieCard = ({ movie }) => {
 
       {/* Poster de la película */}
       <img
-        src={movie.Poster !== 'N/A' ? movie.Poster : '/no-image.png'}
+        src={
+          movie.Poster !== 'N/A'
+            ? movie.Poster
+            : 'https://via.placeholder.com/300x450?text=Sin+Poster'
+        }
         alt={movie.Title}
-        className="w-full h-60 object-cover rounded mb-2"
+        className="w-full h-72 object-cover rounded"
       />
 
       {/* Título y año */}
